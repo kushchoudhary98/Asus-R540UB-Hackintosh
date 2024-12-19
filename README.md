@@ -1,6 +1,6 @@
 # Asus-R540UB-Hackintosh (OpenCore 1.0.0) (Intel i5 8250u)
 
-![About this Mac](.assets/docs/about_this_mac.png)
+![Screenshot](assets/2.png)
 
 ## Intro
 
@@ -12,15 +12,17 @@
 
 ## Specs
 
+![About this Mac](assets/1.png)
+
 | Component      | Brand                                     |
 |----------------|-------------------------------------------|
 | **CPU**        | `Intel Core i5-8250U @ 1.8 GHz`           |
 | **iGPU**       | `Intel UHD Graphics 620`                  |
 | **RAM**        | `8 GB 2400 MHz DDR4` |
 | **Storage**    | `CONSISTENT SSD S6 256GB`  |
-| **Audio**      | `Realtek ALC256`                |
+| **Audio**      | `Realtek ALC256 (layout-id 5)`                |
 | **WiFi Card**  | `Atheros AR9565`   |
-| **OS**         | `macOS Ventura 15.1`             |
+| **OS**         | `macOS Sequoia 15.1`             |
 
 ## Supported versions
 
@@ -44,7 +46,7 @@
 - [x] iGPU Hardware Decoding.
 - [x] Battery read-out.
 - [x] Keyboard & trackpad with all macOS gestures.
-- [x] Wi-Fi (Requires spoofing).
+- [x] Wi-Fi (Requires spoofing to a macOS supported AR928x card).
 - [ ] Bluetooth.
 - [x] USB ports.
 - [x] Audio (Internal speakers, 3.5mm headphone jack).
@@ -58,6 +60,7 @@
 
 - Bluetooth is not yet fixed (There is a chance it might work, will update it on this repository).
 - AirDrop and Handoff are not working(for now) since they require bluetooth to be turned on.
+- Still not able to get Lossless and Dolby working for Apple Music.
 
 ## Wi-Fi (Atheros AR9565)
 Supported upto High Sierra (Support dropped in Mojave).
@@ -69,7 +72,26 @@ Follow this guide [here](https://www.insanelymac.com/forum/topic/328426-qualcomm
 
 **macOS version >= 12 :**
 <br />
-Follow this guide [here](https://www.insanelymac.com/forum/topic/359007-wifi-atheros-monterey-ventura-sonoma-sequoia-work/)
+<p>The wireless card lost support after macOS 10.14. So, spoofing is required to make it appear as a natively supported card(in this case, as Atheros AR928x). In this EFI, spoofing is already done in the `config.plist` file.</p>
+Follow this guide <a href=https://www.insanelymac.com/forum/topic/359007-wifi-atheros-monterey-ventura-sonoma-sequoia-work/>here</a>
+
+## Increasing VRAM (of iGPU)
+<p>By default the macOS allocates 1.5 GB VRAM. The VRAM can be increased based on your requirement and the type of applications you use. For a normal user, I'd suggest use at least 2 GB of VRAM for smoother experience. Here is a table for custom VRAM allocation.</p>
+
+| value | VRAM |
+| --- | --- |
+| 00000040 | 1024MB |
+| 00000060 | 1536MB |
+| 00000080 | 2048MB |
+| 000000A0 | 2560MB |
+| 000000C0 | 3072MB |
+| 000000E0 | 3584MB |
+| FFFFFFFF | 4096MB |
+
+<p>Put this value in `framebuffer-unifiedmem` in `DeviceProperties->Add->(path of your igpu). Also make sure that `framebuffer-patch-enable` is set to `01000000` (this is to tell WhateverGreen to apply framebuffer patches).</p>
+<a href=assets/3.png></a>
+<br />
+More about framebuffer patching on WhateverGreen's repo <a href=https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md>here</a>
 
 ## Known Issues
 - When you switch Youtube Video to full-screen, screen flickers!!! *No such issue while using Google Chrome to watch youtube videos*.
