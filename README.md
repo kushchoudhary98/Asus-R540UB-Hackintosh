@@ -73,6 +73,7 @@ Follow this guide [here](https://www.insanelymac.com/forum/topic/328426-qualcomm
 **macOS version >= 12 :**
 <br />
 <p>The wireless card lost support after macOS 10.14. So, spoofing is required to make it appear as a natively supported card(in this case, as Atheros AR928x). In this EFI, spoofing is already done in the `config.plist` file.</p>
+<img src=https://github.com/kushchoudhary98/Asus-R540UB-Hackintosh/blob/main/assets/wifi.png></img>
 Follow this guide <a href=https://www.insanelymac.com/forum/topic/359007-wifi-atheros-monterey-ventura-sonoma-sequoia-work/>here</a>
 
 ## Increasing VRAM (of iGPU)
@@ -89,7 +90,7 @@ Follow this guide <a href=https://www.insanelymac.com/forum/topic/359007-wifi-at
 | FFFFFFFF | 4096MB |
 
 <p>Put this value in `framebuffer-unifiedmem` in `DeviceProperties->Add->(path of your igpu). Also make sure that `framebuffer-patch-enable` is set to `01000000` (this is to tell WhateverGreen to apply framebuffer patches).</p>
-<a href=assets/3.png></a>
+<img src=https://github.com/kushchoudhary98/Asus-R540UB-Hackintosh/blob/main/assets/vram.png></img>
 <br />
 More about framebuffer patching on WhateverGreen's repo <a href=https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md>here</a>
 
