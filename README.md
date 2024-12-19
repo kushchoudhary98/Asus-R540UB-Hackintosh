@@ -18,6 +18,7 @@
 |----------------|-------------------------------------------|
 | **CPU**        | `Intel Core i5-8250U @ 1.8 GHz`           |
 | **iGPU**       | `Intel UHD Graphics 620`                  |
+| **dGPU**       | `Nvidia MX110 (not supported by macOS)`   |
 | **RAM**        | `8 GB 2400 MHz DDR4` |
 | **Storage**    | `CONSISTENT SSD S6 256GB`  |
 | **Audio**      | `Realtek ALC256 (layout-id 5)`                |
@@ -44,6 +45,7 @@
 - [x] CPU power management.
 - [x] Graphics acceleration.
 - [x] iGPU Hardware Decoding.
+- [ ] dGPU (Nvidia MX110)
 - [x] Battery read-out.
 - [x] Keyboard & trackpad with all macOS gestures.
 - [x] Wi-Fi (Requires spoofing to a macOS supported AR928x card).
@@ -61,6 +63,7 @@
 - Bluetooth is not yet fixed (There is a chance it might work, will update it on this repository).
 - AirDrop and Handoff are not working(for now) since they require bluetooth to be turned on.
 - Still not able to get Lossless and Dolby working for Apple Music.
+- Dedicated GPU (Nvidia) is not supported by macOS **(will never work)**.
 
 ## Wi-Fi (Atheros AR9565)
 Supported upto High Sierra (Support dropped in Mojave).
