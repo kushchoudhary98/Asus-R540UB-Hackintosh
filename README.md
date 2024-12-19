@@ -111,3 +111,6 @@ If you encounter any issue, please file a bugreport.
 * [**PG7**](https://www.insanelymac.com/forum/profile/1361829-pg7/) for wifi patching.
 * **every other people that contributed to the hackintosh world.**
 
+## Special Thanks
+[Harshaaaaaaaaaa](https://github.com/harshaaaaaaaaaa)
+
